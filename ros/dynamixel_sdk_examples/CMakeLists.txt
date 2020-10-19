@@ -87,9 +87,9 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(ros_read_write src/read_write_node.cpp)
-add_dependencies(ros_read_write ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(ros_read_write ${catkin_LIBRARIES})
+add_executable(read_write_node src/read_write_node.cpp)
+add_dependencies(read_write_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(read_write_node ${catkin_LIBRARIES})
 
 #############
 ## Install ##
@@ -97,7 +97,7 @@ target_link_libraries(ros_read_write ${catkin_LIBRARIES})
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
-install(TARGETS ros_read_write
+install(TARGETS read_write_node
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
