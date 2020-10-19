@@ -2,7 +2,7 @@
 # Set minimum required version of cmake, project name and compile options
 ################################################################################
 cmake_minimum_required(VERSION 2.8.3)
-project(dynamixel_sdk)
+project(dynamixel_sdk_ros)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
@@ -31,56 +31,56 @@ catkin_python_setup()
 catkin_package(
   INCLUDE_DIRS include
   CATKIN_DEPENDS roscpp rospy
-  LIBRARIES dynamixel_sdk
+  LIBRARIES ${PROJECT_NAME}
 )
 
 ################################################################################
 # Build
 ################################################################################
 include_directories(
-  include/dynamixel_sdk
+  include/${PROJECT_NAME}
   ${catkin_INCLUDE_DIRS}
 )
 
 if(APPLE)
-  add_library(dynamixel_sdk
-    src/dynamixel_sdk/packet_handler.cpp
-    src/dynamixel_sdk/protocol1_packet_handler.cpp
-    src/dynamixel_sdk/protocol2_packet_handler.cpp
-    src/dynamixel_sdk/group_sync_read.cpp
-    src/dynamixel_sdk/group_sync_write.cpp
-    src/dynamixel_sdk/group_bulk_read.cpp
-    src/dynamixel_sdk/group_bulk_write.cpp
-    src/dynamixel_sdk/port_handler.cpp
-    src/dynamixel_sdk/port_handler_mac.cpp
+  add_library(${PROJECT_NAME}
+    src/${PROJECT_NAME}/packet_handler.cpp
+    src/${PROJECT_NAME}/protocol1_packet_handler.cpp
+    src/${PROJECT_NAME}/protocol2_packet_handler.cpp
+    src/${PROJECT_NAME}/group_sync_read.cpp
+    src/${PROJECT_NAME}/group_sync_write.cpp
+    src/${PROJECT_NAME}/group_bulk_read.cpp
+    src/${PROJECT_NAME}/group_bulk_write.cpp
+    src/${PROJECT_NAME}/port_handler.cpp
+    src/${PROJECT_NAME}/port_handler_mac.cpp
   )
 else()
-  add_library(dynamixel_sdk
-    src/dynamixel_sdk/packet_handler.cpp
-    src/dynamixel_sdk/protocol1_packet_handler.cpp
-    src/dynamixel_sdk/protocol2_packet_handler.cpp
-    src/dynamixel_sdk/group_sync_read.cpp
-    src/dynamixel_sdk/group_sync_write.cpp
-    src/dynamixel_sdk/group_bulk_read.cpp
-    src/dynamixel_sdk/group_bulk_write.cpp
-    src/dynamixel_sdk/port_handler.cpp
-    src/dynamixel_sdk/port_handler_linux.cpp
+  add_library(${PROJECT_NAME}
+    src/${PROJECT_NAME}/packet_handler.cpp
+    src/${PROJECT_NAME}/protocol1_packet_handler.cpp
+    src/${PROJECT_NAME}/protocol2_packet_handler.cpp
+    src/${PROJECT_NAME}/group_sync_read.cpp
+    src/${PROJECT_NAME}/group_sync_write.cpp
+    src/${PROJECT_NAME}/group_bulk_read.cpp
+    src/${PROJECT_NAME}/group_bulk_write.cpp
+    src/${PROJECT_NAME}/port_handler.cpp
+    src/${PROJECT_NAME}/port_handler_linux.cpp
   )
 endif()
 
-add_dependencies(dynamixel_sdk ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(dynamixel_sdk ${catkin_LIBRARIES})
+add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
 
 ################################################################################
 # Install
 ################################################################################
-install(TARGETS dynamixel_sdk
+install(TARGETS ${PROJECT_NAME}
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
-install(DIRECTORY include/${PROJECT_NAME}/
+install(DIRECTORY include
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )
 

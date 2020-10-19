@@ -16,6 +16,9 @@
   <url type="repository">https://github.com/ROBOTIS-GIT/DynamixelSDK</url>
   <url type="bugtracker">https://github.com/ROBOTIS-GIT/DynamixelSDK/issues</url>
   <buildtool_depend>catkin</buildtool_depend>
-  <depend>roscpp</depend>
-  <depend>rospy</depend>
+  <exec_depend>dynamixel_sdk_examples</exec_depend>
+  <exec_depend>dynamixel_sdk_ros</exec_depend>
+  <!-- <depend>roscpp</depend> -->
+  <!-- <depend>rospy</depend> -->
+  <export><metapackage/></export>
 </package>

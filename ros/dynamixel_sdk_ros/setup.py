@@ -6,7 +6,7 @@ from catkin_pkg.python_setup import generate_distutils_setup
 
 # fetch values from package.xml
 setup_args = generate_distutils_setup(
-    packages=['dynamixel_sdk'],
+    packages=['dynamixel_sdk_ros'],
     package_dir={'': 'src'}
 )
 
